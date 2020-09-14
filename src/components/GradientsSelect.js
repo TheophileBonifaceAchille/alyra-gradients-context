@@ -1,11 +1,14 @@
-import React from "react"
-import { uniqueTags } from "../gradients"
+import React, { useContext } from "react";
 
-const GradientsSelect = (props) => {
-  const { filter, setFilter } = props
+import { FilterContext } from "./../context/FilterContext";
+import { GradientsContext } from "./../context/GradientsContext";
+
+const GradientsSelect = () => {
+  const { filter, setFilter } = useContext(FilterContext);
+  const { uniqueTags } = useContext(GradientsContext);
   const handleSelectChange = (e) => {
-    setFilter(e.target.value)
-  }
+    setFilter(e.target.value);
+  };
   return (
     <div className="input-group mb-3">
       <label className="input-group-text" htmlFor="select">
@@ -25,7 +28,7 @@ const GradientsSelect = (props) => {
         ))}
       </select>
     </div>
-  )
-}
+  );
+};
 
-export default GradientsSelect
+export default GradientsSelect;

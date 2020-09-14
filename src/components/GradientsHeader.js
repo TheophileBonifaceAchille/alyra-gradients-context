@@ -1,20 +1,21 @@
-import React, { useState } from "react"
-import { gradients } from "../gradients"
+import React, { useContext, useState } from "react";
+import { GradientsContext } from "./../context/GradientsContext";
 
 const GradientsHeader = (props) => {
-  const { children } = props
-  const length = gradients.length
+  const { children } = props;
+  const { gradients } = useContext(GradientsContext);
+  const length = gradients.length;
 
-  const chooseGradient = () => Math.floor(Math.random() * length)
+  const chooseGradient = () => Math.floor(Math.random() * length);
 
-  const [randomGradient, setRandomGradient] = useState(chooseGradient)
+  const [randomGradient, setRandomGradient] = useState(chooseGradient);
   const handleReloadClick = () => {
-    setRandomGradient(chooseGradient)
-  }
+    setRandomGradient(chooseGradient);
+  };
 
   const style = {
     backgroundImage: `linear-gradient(to right, ${gradients[randomGradient].start}, ${gradients[randomGradient].end})`,
-  }
+  };
   return (
     <header className="text-center bg-dark text-white py-5 mb-5" style={style}>
       {children}
@@ -43,7 +44,7 @@ const GradientsHeader = (props) => {
         </svg>
       </button>
     </header>
-  )
-}
+  );
+};
 
-export default GradientsHeader
+export default GradientsHeader;
